@@ -11,16 +11,16 @@ const todoReducer = (state = [], action) => {
     case ADD_TODO:
       return [...state, action.payload];
     case DELETE_TODO:
-      return state.filter(todo => todo.id !== action.payload);
+      return state.filter(todo => todo._id !== action.payload);
     case EDIT_TODO:
       return state.map(todo =>
-        todo.id === action.payload.id
+        todo._id === action.payload._id
           ? { ...todo, text: action.payload.text }
           : todo
       );
     case TOGGLE_TODO:
       return state.map(todo =>
-        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+        todo._id === action._id ? { ...todo, completed: !todo.completed } : todo
       );
     case FETCH_TODOS:
       return action.payload;

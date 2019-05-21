@@ -24,11 +24,11 @@ class App extends React.Component {
         <div className="ui very relaxed large divided list">
           {this.props.todos.map(
             todo =>
-              todo.userId === this.props.currentUserId && (
+              todo.userId == this.props.currentUserId && (
                 <Item
-                  key={todo.id}
-                  onDelete={() => this.props.deleteTodo(todo.id)}
-                  onEdit={text => this.props.editTodo(todo.id, text)}
+                  key={todo._id}
+                  onDelete={() => this.props.deleteTodo(todo._id)}
+                  onEdit={text => this.props.editTodo(todo._id, text)}
                 >
                   {todo.text}
                 </Item>

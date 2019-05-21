@@ -27,7 +27,7 @@ export const addTodo = text => async (dispatch, getState) => {
   const response = await axios.post("/todos", {
     text,
     completed: false,
-    userId
+    userId: userId.toString()
   });
 
   dispatch({ type: ADD_TODO, payload: response.data });
@@ -40,7 +40,8 @@ export const deleteTodo = id => async dispatch => {
 };
 
 export const editTodo = (id, text) => async dispatch => {
-  const response = await axios.patch(`/todos/${id}`, { text });
+  const response = await axios.put(`/todos/${id}`, { text });
+  console.log(response);
 
   dispatch({ type: EDIT_TODO, payload: response.data });
 };
